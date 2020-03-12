@@ -7,7 +7,6 @@
 export const randomInt = (lowerBound, upperBound) => {
     const random = Math.random() * (upperBound - lowerBound);
     return Math.floor(random + lowerBound);
-    ra
 }
 
 /**
@@ -19,9 +18,9 @@ export const randomInt = (lowerBound, upperBound) => {
  */
 export const randomString = (dict, length) => {
     const raw = new Array(length);
-    raw.forEach(char => {
+    for (let i = 0; i < length; i++) {
         const idx = randomInt(0, dict.length);
-        char = dict[idx];
-    })
+        raw[i] = dict[idx];
+    }
     return raw.join('');
 }
