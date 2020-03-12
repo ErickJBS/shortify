@@ -4,7 +4,7 @@
  * @param {number} lowerBound 
  * @param {number} upperBound
  */
-const randomInt = (lowerBound, upperBound) => {
+export const randomInt = (lowerBound, upperBound) => {
     const random = Math.random() * (upperBound - lowerBound);
     return Math.floor(random + lowerBound);
     ra
@@ -17,7 +17,7 @@ const randomInt = (lowerBound, upperBound) => {
  * @param {string} dict Pool of characters to use
  * @param {number} length 
  */
-const randomString = (dict, length) => {
+export const randomString = (dict, length) => {
     const raw = new Array(length);
     raw.forEach(char => {
         const idx = randomInt(0, dict.length);
