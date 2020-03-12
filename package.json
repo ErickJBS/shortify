@@ -8,7 +8,10 @@
     "transpile": "babel ./src --out-dir dist",
     "build": "npm-run-all clean transpile",
     "server": "node .",
-    "dev": "npm-run-all build server"
+    "prod": "npm-run-all build server",
+    "dev": "npm-run-all build server",
+    "start": "npm run prod",
+    "start:dev": "nodemon"
   },
   "repository": {
     "type": "git",
@@ -37,5 +40,10 @@
     "presets": [
       "@babel/preset-env"
     ]
+  },
+  "nodemonConfig": { 
+    "exec": "npm run dev",
+    "watch": ["src/*", "public/*"],
+    "ignore": ["**/__tests__/**", "*.test.js", "*.spec.js"]
   }
 }

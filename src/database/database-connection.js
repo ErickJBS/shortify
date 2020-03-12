@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
 const connectionString = process.env.CONNECTION_STRING;
 
@@ -8,4 +8,4 @@ const database = mongoose.connection;
 
 database.on('error', console.error.bind(console, 'MongoDB connection error:'))
 
-module.exports = database;
+export default database;

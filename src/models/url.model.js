@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+import { Schema, model } from 'mongoose';
 
 const UrlModelSchema = new Schema({
     urlId: String,
@@ -7,4 +7,4 @@ const UrlModelSchema = new Schema({
 
 const UrlModel = model('Url', UrlModelSchema);
 
-module.exports = UrlModel;
+export default UrlModel;
