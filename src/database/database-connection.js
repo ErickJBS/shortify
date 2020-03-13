@@ -1,11 +1,22 @@
 import mongoose from 'mongoose';
 
-const connectionString = process.env.CONNECTION_STRING;
+class DatabaseConnection {
+    connectionString;
 
-mongoose.connect(connectionString);
-mongoose.Promise = global.Promise;
-const database = mongoose.connection;
+    constructor(connectionString) {
+        mongoose.Promise = global.Promise;
+        this.connectionString = connectionString;
+        
+        const database = mongoose.connection;
+        database.on('error', console.error.bind(console, 'MongoDB connection error:'))
+    }
 
-database.on('error', console.error.bind(console, 'MongoDB connection error:'))
+    connect() {
+        return mongoose.connect(this.connectionString, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true
+        });
+    }
+}
 
-export default database;
+export default DatabaseConnection;
