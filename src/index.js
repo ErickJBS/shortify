@@ -1,6 +1,8 @@
 import App from './app';
 import Database from './database/database-connection';
 import dotenv from 'dotenv';
+import 'core-js/stable';
+import 'regenerator-runtime/runtime';
 
 dotenv.config();
 
@@ -11,7 +13,9 @@ if (!connectionString) {
     throw "No connection string setting in environment variables";
 }
 
-const app = new App(port, []);
+import UrlRouter from './routes/url.router';
+
+const app = new App(port, [ UrlRouter ]);
 const db = new Database(connectionString);
 
 db.connect().then(() => {
