@@ -5,6 +5,9 @@ class UrlController {
     async createShortUrl(request, response) {
         try {
             const { url } = request.body;
+            if (!url) {
+                response.status(400).send();
+            }
             const shortUrl = await UrlService.createShortUrl(url);
             response.json(shortUrl);
 
@@ -17,6 +20,9 @@ class UrlController {
     async getShortUrl(request, response) {
         try {
             const { id } = request.params;
+            if (!id) {
+                response.status(400).send();
+            }
             const shortUrl = await UrlService.getShortUrl(id);
             if (!shortUrl) {
                 response.status(404).send();
@@ -32,6 +38,9 @@ class UrlController {
     async redirectToLongUrl(request, response) {
         try {
             const { id } = request.params;
+            if (!id) {
+                response.status(400).send();
+            }
             const shortUrl = await UrlService.getShortUrl(id);
             if (!shortUrl) {
                 response.status(404).send();
